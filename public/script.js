@@ -19,7 +19,6 @@ async function updateStatus() {
         text.textContent = status.text;
         count.textContent = `${data.total || 0} bot`;
         
-        // Update session list
         const list = document.getElementById('sessionList');
         if (data.sessions && data.sessions.length > 0) {
             list.innerHTML = data.sessions.map(s => `
@@ -37,13 +36,14 @@ async function updateStatus() {
     }
 }
 
-// Pairing
+// PAIRING - FIX: ga ada validasi!
 document.getElementById('pairBtn').addEventListener('click', async () => {
     const btn = document.getElementById('pairBtn');
     const input = document.getElementById('pairInput');
     const result = document.getElementById('pairResult');
     const number = input.value.trim();
     
+    // HANYA CEK KOSONG
     if (!number) {
         result.className = 'result-box show error';
         result.innerHTML = '❌ Masukkan nomor HP dulu!';
@@ -84,7 +84,7 @@ document.getElementById('pairBtn').addEventListener('click', async () => {
     btn.textContent = 'Dapatkan Kode';
 });
 
-// Start Bot
+// START BOT
 document.getElementById('startBtn').addEventListener('click', async () => {
     const btn = document.getElementById('startBtn');
     const input = document.getElementById('startInput');
@@ -127,7 +127,7 @@ document.getElementById('startBtn').addEventListener('click', async () => {
     btn.textContent = 'Start Bot';
 });
 
-// Stop Bot
+// STOP BOT
 document.getElementById('stopBtn').addEventListener('click', async () => {
     const btn = document.getElementById('stopBtn');
     const input = document.getElementById('stopInput');
@@ -170,7 +170,7 @@ document.getElementById('stopBtn').addEventListener('click', async () => {
     btn.textContent = 'Stop Bot';
 });
 
-// Send Message
+// SEND MESSAGE
 document.getElementById('sendBtn').addEventListener('click', async () => {
     const btn = document.getElementById('sendBtn');
     const from = document.getElementById('sendFrom').value.trim();
