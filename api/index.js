@@ -59,7 +59,9 @@ async function startBot(number) {
     return sock;
 }
 
-// API: Pairing Code
+// ============ API ENDPOINTS ============
+
+// 1. PAIRING CODE
 app.post('/api/pair', async (req, res) => {
     const { number } = req.body;
     if (!number) {
@@ -80,7 +82,7 @@ app.post('/api/pair', async (req, res) => {
     }
 });
 
-// API: Start Bot
+// 2. START BOT
 app.post('/api/start', async (req, res) => {
     const { number } = req.body;
     if (!number) {
@@ -98,7 +100,7 @@ app.post('/api/start', async (req, res) => {
     }
 });
 
-// API: Stop Bot
+// 3. STOP BOT
 app.post('/api/stop', async (req, res) => {
     const { number } = req.body;
     if (!number) {
@@ -115,7 +117,7 @@ app.post('/api/stop', async (req, res) => {
     }
 });
 
-// API: Send Message
+// 4. KIRIM PESAN
 app.post('/api/send', async (req, res) => {
     const { number, to, message } = req.body;
     if (!number || !to || !message) {
@@ -135,7 +137,7 @@ app.post('/api/send', async (req, res) => {
     }
 });
 
-// API: List Sessions
+// 5. LIST SESSIONS
 app.get('/api/sessions', (req, res) => {
     res.json({
         total: sessions.size,
@@ -143,7 +145,7 @@ app.get('/api/sessions', (req, res) => {
     });
 });
 
-// API: Status
+// 6. STATUS
 app.get('/api/status', (req, res) => {
     res.json({
         status: sessions.size > 0 ? 'connected' : 'disconnected',
@@ -153,7 +155,7 @@ app.get('/api/status', (req, res) => {
     });
 });
 
-// Serve Frontend
+// 7. HOME
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
